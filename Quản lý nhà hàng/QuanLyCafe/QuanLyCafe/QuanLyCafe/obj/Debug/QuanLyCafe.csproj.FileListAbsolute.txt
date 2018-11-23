@@ -10,3 +10,4 @@ C:\Users\Admin\Desktop\Quản lý nhà hàng\QuanLyCafe\QuanLyCafe\QuanLyCafe\ob
 C:\Users\Admin\Desktop\Quản lý nhà hàng\QuanLyCafe\QuanLyCafe\QuanLyCafe\obj\Debug\QuanLyCafe.fTableManager.resources
 C:\Users\Admin\Desktop\Quản lý nhà hàng\QuanLyCafe\QuanLyCafe\QuanLyCafe\obj\Debug\QuanLyCafe.fAccountProfile.resources
 C:\Users\Admin\Desktop\Quản lý nhà hàng\QuanLyCafe\QuanLyCafe\QuanLyCafe\obj\Debug\QuanLyCafe.fAdmin.resources
+C:\Users\Admin\Desktop\Quản lý nhà hàng\QuanLyCafe\QuanLyCafe\QuanLyCafe\obj\Debug\QuanLyCafe.fChef.resources
