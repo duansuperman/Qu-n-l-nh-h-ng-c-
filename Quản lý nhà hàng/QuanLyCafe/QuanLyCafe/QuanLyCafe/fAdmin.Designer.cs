@@ -30,6 +30,8 @@
         {
             this.tpAccount = new System.Windows.Forms.TabPage();
             this.panel26 = new System.Windows.Forms.Panel();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.txbPassWord = new System.Windows.Forms.TextBox();
             this.panel28 = new System.Windows.Forms.Panel();
             this.cbAccountType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -114,10 +116,9 @@
             this.dtpkToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpkFromDate = new System.Windows.Forms.DateTimePicker();
             this.tcAdmin = new System.Windows.Forms.TabControl();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.txbPassWord = new System.Windows.Forms.TextBox();
             this.tpAccount.SuspendLayout();
             this.panel26.SuspendLayout();
+            this.panel25.SuspendLayout();
             this.panel28.SuspendLayout();
             this.panel29.SuspendLayout();
             this.panel30.SuspendLayout();
@@ -156,7 +157,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.panel1.SuspendLayout();
             this.tcAdmin.SuspendLayout();
-            this.panel25.SuspendLayout();
             this.SuspendLayout();
             // 
             // tpAccount
@@ -183,6 +183,21 @@
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(382, 318);
             this.panel26.TabIndex = 5;
+            // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.txbPassWord);
+            this.panel25.Location = new System.Drawing.Point(3, 158);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(352, 47);
+            this.panel25.TabIndex = 2;
+            // 
+            // txbPassWord
+            // 
+            this.txbPassWord.Location = new System.Drawing.Point(129, 16);
+            this.txbPassWord.Name = "txbPassWord";
+            this.txbPassWord.Size = new System.Drawing.Size(198, 20);
+            this.txbPassWord.TabIndex = 0;
             // 
             // panel28
             // 
@@ -1004,21 +1019,6 @@
             this.tcAdmin.TabIndex = 0;
             this.tcAdmin.SelectedIndexChanged += new System.EventHandler(this.tcAdmin_SelectedIndexChanged);
             // 
-            // panel25
-            // 
-            this.panel25.Controls.Add(this.txbPassWord);
-            this.panel25.Location = new System.Drawing.Point(3, 158);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(352, 47);
-            this.panel25.TabIndex = 2;
-            // 
-            // txbPassWord
-            // 
-            this.txbPassWord.Location = new System.Drawing.Point(129, 16);
-            this.txbPassWord.Name = "txbPassWord";
-            this.txbPassWord.Size = new System.Drawing.Size(198, 20);
-            this.txbPassWord.TabIndex = 0;
-            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1031,6 +1031,8 @@
             this.Load += new System.EventHandler(this.fAdmin_Load);
             this.tpAccount.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
             this.panel29.ResumeLayout(false);
@@ -1083,8 +1085,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tcAdmin.ResumeLayout(false);
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
             this.ResumeLayout(false);
 
         }

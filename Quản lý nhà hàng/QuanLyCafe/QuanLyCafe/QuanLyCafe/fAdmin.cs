@@ -375,6 +375,7 @@ namespace QuanLyCafe
         private void btnShowCategory_Click(object sender, EventArgs e)
         {
             LoadListCategory();
+           
         }
 
         private void btnEditCategory_Click(object sender, EventArgs e)
@@ -404,6 +405,7 @@ namespace QuanLyCafe
 
             con.Close();
             LoadListCategory();
+           
         }
 
         private void dtgrCategory_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -420,7 +422,12 @@ namespace QuanLyCafe
                 MessageBox.Show("Không được chọn !");
             }
         }
+        void UpdateTable()
+        {
+            fTableManager f = new fTableManager();
+            f.LoadTable();
 
+        }
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             string strquery = "insert into FoodCategory values(@Name)";
@@ -440,8 +447,9 @@ namespace QuanLyCafe
             }
             con.Close();
             LoadListCategory();
+          
         }
-
+        
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
             string strquery = "delete FoodCategory where id = @ID";
@@ -454,6 +462,7 @@ namespace QuanLyCafe
 
             con.Close();
             LoadListCategory();
+            
         }
         void LoadListTable()
         {
@@ -499,6 +508,7 @@ namespace QuanLyCafe
                 MessageBox.Show("Không thể thêm !");
             }
             con.Close();
+            
             LoadListTable();
         }
 
@@ -656,6 +666,16 @@ namespace QuanLyCafe
             }
             con.Close();
             LoadListAccount();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+           UpdateTable();
         }
     }
 }

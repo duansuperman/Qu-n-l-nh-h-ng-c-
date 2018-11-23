@@ -53,6 +53,7 @@
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.loadTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -65,7 +66,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adminToolStripMenuItem,
-            this.thôngTinToolStripMenuItem});
+            this.thôngTinToolStripMenuItem,
+            this.loadTableToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(840, 24);
@@ -290,6 +292,13 @@
             this.flpTable.TabIndex = 4;
             this.flpTable.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTable_Paint);
             // 
+            // loadTableToolStripMenuItem
+            // 
+            this.loadTableToolStripMenuItem.Name = "loadTableToolStripMenuItem";
+            this.loadTableToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.loadTableToolStripMenuItem.Text = "Load Table";
+            this.loadTableToolStripMenuItem.Click += new System.EventHandler(this.loadTableToolStripMenuItem_Click);
+            // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -345,5 +354,6 @@
         private System.Windows.Forms.TextBox txtTotalPrice;
         private System.Windows.Forms.NumericUpDown nmFoodCount;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ToolStripMenuItem loadTableToolStripMenuItem;
     }
 }

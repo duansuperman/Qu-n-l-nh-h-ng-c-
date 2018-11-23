@@ -33,6 +33,11 @@ namespace QuanLyCafe
             LoadComboboxTable(cbSwitchTable);
         }
 
+        public fTableManager()
+        {
+            // TODO: Complete member initialization
+        }
+
         #region Method
         void ChangeAccount(int type)
         {
@@ -62,8 +67,9 @@ namespace QuanLyCafe
             cbFood.DataSource = listFood;
             cbFood.DisplayMember = "Name";
         }
-        void LoadTable()
+        public void LoadTable()
         {
+            
             flpTable.Controls.Clear();
             List<Table> tableList = TableDAO.Instance.LoadTableList();
 
@@ -284,6 +290,11 @@ namespace QuanLyCafe
         private void btnDiscount_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void loadTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flpTable.Controls.Clear();
         }
     }
 }
