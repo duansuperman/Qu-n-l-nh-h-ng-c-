@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Drawing.Printing;
 
 namespace QuanLyCafe
 {
@@ -26,15 +27,18 @@ namespace QuanLyCafe
         }
         public fTableManager(Account acc)
         {
+            
             InitializeComponent();
             this.LoginAccount = acc;
             LoadCategory();
             LoadTable();
             LoadComboboxTable(cbSwitchTable);
+            
         }
 
         public fTableManager()
         {
+            
             // TODO: Complete member initialization
         }
 
@@ -250,22 +254,33 @@ namespace QuanLyCafe
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-            Table table = lsvBill.Tag as Table;
-            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
-            int discount =(int) nmDisCount.Value;
-            //MessageBox.Show(discount.ToString());
-            float totalPrice = float.Parse(txtTotalPrice.Text.Split('.')[0]);
-            //MessageBox.Show(totalPrice.ToString());
-            float finalTotalPrice = (1 - (float)discount / 100) * totalPrice*1000;
-            if (idBill != -1)
+            try
             {
-                if (MessageBox.Show("Bạn muốn thanh toán hóa đơn " + table.Name +"\n"+"Tổng tiền = "+finalTotalPrice, "Thông báo !", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                Table table = lsvBill.Tag as Table;
+                int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+                int discount = (int)nmDisCount.Value;
+                //MessageBox.Show(discount.ToString());
+                float totalPrice = float.Parse(txtTotalPrice.Text.Split('.')[0]);
+                //MessageBox.Show(totalPrice.ToString());
+                float finalTotalPrice = (1 - (float)discount / 100) * totalPrice * 1000;
+                if (idBill != -1)
                 {
-                    BillDAO.Instance.CheckOut(idBill,discount,(float)finalTotalPrice);
-                    ShowBill(table.ID);
+                    CultureInfo culture = new CultureInfo("vi-VN");
+                    if (MessageBox.Show("Bạn muốn thanh toán hóa đơn " + table.Name + "\n" + "Tổng tiền = " + finalTotalPrice.ToString("c",culture), "Thông báo !", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                    {
+                        BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotalPrice);
+                        PrintReciept();
+                        ShowBill(table.ID);
+                        
+                    }
                 }
+                
+                LoadTable();
             }
-            LoadTable();
+            catch
+            {
+                MessageBox.Show("Mời bạn chọn bàn để thanh toán ! ");
+            }
         }
         #endregion
 
@@ -295,6 +310,96 @@ namespace QuanLyCafe
         private void loadTableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             flpTable.Controls.Clear();
+            LoadTable();
+        }
+
+        public void PrintReciept()
+        {
+            PrintDialog printDialog = new PrintDialog();
+
+            PrintDocument printDocument = new PrintDocument();
+
+            printDialog.Document = printDocument; //add the document to the dialog box...        
+
+            printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(CreateReceipt); //add an event handler that will do the printing
+
+            //on a till you will not want to ask the user where to print but this is fine for the test envoironment.
+
+            DialogResult result = printDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                printDocument.Print();
+
+            } 
+        }
+        private void btnPrintReciept_Click(object sender, EventArgs e)
+        {
+            
+
+
+        }
+
+        public void CreateReceipt(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
+           
+            //this prints the reciept
+
+            Graphics graphic = e.Graphics;
+
+            Font font = new Font("Courier New", 12); //must use a mono spaced font as the spaces need to line up
+
+            float fontHeight = font.GetHeight();
+
+            int startX = 10;
+            int startY = 10;
+            int offset = 40;
+
+            graphic.DrawString("Nhà hàng Thiên Bút Restaurant", new Font("Courier New", 18), new SolidBrush(Color.Black), startX, startY);
+            string top = "Tên món".PadRight(20) + "SL".PadRight(10) +"Đ.Giá".PadRight(10)+ "Thành tiền";
+            graphic.DrawString(top, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight; //make the spacing consistent
+            graphic.DrawString("--------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5; //make the spacing consistent
+
+            
+            
+
+            foreach (ListViewItem item in lsvBill.Items)
+            {
+
+                graphic.DrawString(item.SubItems[0].Text.ToString().PadRight(20) + item.SubItems[1].Text.ToString().PadRight(10) + item.SubItems[2].Text.ToString().PadRight(10) + item.SubItems[3].Text.ToString(), new Font("Courier New", 12, FontStyle.Italic), new SolidBrush(Color.Red), startX, startY + offset);
+
+                offset = offset + (int)fontHeight + 5; //make the spacing consistent
+
+            }
+
+
+            graphic.DrawString("--------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5; //make the spacing consistent
+            //when we have drawn all of the items add the total
+
+            offset = offset + 20; //make some room so that the total stands out.
+
+            graphic.DrawString("Total  ".PadRight(40) + txtTotalPrice.Text.ToString(), new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
+
+            int discount = (int)nmDisCount.Value;
+            //MessageBox.Show(discount.ToString());
+            float totalPrice = float.Parse(txtTotalPrice.Text.Split('.')[0]);
+            //MessageBox.Show(totalPrice.ToString());
+            float finalTotalPrice = (1 - (float)discount / 100) * totalPrice * 1000;
+
+            offset = offset + 20; //make some room so that the total stands out.
+
+            graphic.DrawString("Sales ".PadRight(40) + discount.ToString()+"%", new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
+
+            CultureInfo culture = new CultureInfo("vi-VN");
+            offset = offset + 40; //make some room so that the total stands out.
+
+            graphic.DrawString("Total to pay ".PadRight(40) + finalTotalPrice.ToString("c",culture), new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
+
+            
         }
     }
 }

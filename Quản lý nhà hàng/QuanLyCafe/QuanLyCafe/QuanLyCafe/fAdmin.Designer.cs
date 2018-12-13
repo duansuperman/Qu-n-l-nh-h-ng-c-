@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAdmin));
             this.tpAccount = new System.Windows.Forms.TabPage();
             this.panel26 = new System.Windows.Forms.Panel();
             this.panel25 = new System.Windows.Forms.Panel();
             this.txbPassWord = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel28 = new System.Windows.Forms.Panel();
             this.cbAccountType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -187,6 +189,7 @@
             // panel25
             // 
             this.panel25.Controls.Add(this.txbPassWord);
+            this.panel25.Controls.Add(this.label10);
             this.panel25.Location = new System.Drawing.Point(3, 158);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(352, 47);
@@ -198,6 +201,16 @@
             this.txbPassWord.Name = "txbPassWord";
             this.txbPassWord.Size = new System.Drawing.Size(198, 20);
             this.txbPassWord.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Pass";
+            this.label10.Click += new System.EventHandler(this.label12_Click);
             // 
             // panel28
             // 
@@ -253,6 +266,7 @@
             this.label12.Size = new System.Drawing.Size(63, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Tên hiển thị";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // panel30
             // 
@@ -1023,8 +1037,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 473);
+            this.BackgroundImage = global::QuanLyCafe.Properties.Resources.giaiphapquanso3628;
+            this.ClientSize = new System.Drawing.Size(854, 431);
             this.Controls.Add(this.tcAdmin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
@@ -1179,6 +1195,7 @@
         private System.Windows.Forms.TabControl tcAdmin;
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.TextBox txbPassWord;
+        private System.Windows.Forms.Label label10;
 
 
     }

@@ -645,7 +645,7 @@ namespace QuanLyCafe
 
         private void btnEditAccount_Click(object sender, EventArgs e)
         {
-            string strquery = "update table  Account set DisplayName = @displayname,PassWord=@password,Type=@type where UserName=@username";
+            string strquery = "update  Account set DisplayName = @displayname,PassWord=@password,Type=@type where UserName=@username";
             SqlConnection con = new SqlConnection("Data Source=ADMIN\\SQLEXPRESS;Initial Catalog=QuanLyQuanCafe;Integrated Security=True");
             con.Open();
             try
@@ -662,7 +662,7 @@ namespace QuanLyCafe
             }
             catch
             {
-                MessageBox.Show("Không thể thêm !");
+                MessageBox.Show("Không thể cập nhật !");
             }
             con.Close();
             LoadListAccount();
@@ -676,6 +676,11 @@ namespace QuanLyCafe
         private void button1_Click_1(object sender, EventArgs e)
         {
            UpdateTable();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

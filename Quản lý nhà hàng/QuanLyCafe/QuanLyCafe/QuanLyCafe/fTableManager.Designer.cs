@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fTableManager));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lsvBill = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,7 +55,6 @@
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.loadTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -70,7 +71,7 @@
             this.loadTableToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(840, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(828, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -106,10 +107,17 @@
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
+            // loadTableToolStripMenuItem
+            // 
+            this.loadTableToolStripMenuItem.Name = "loadTableToolStripMenuItem";
+            this.loadTableToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.loadTableToolStripMenuItem.Text = "Load Table";
+            this.loadTableToolStripMenuItem.Click += new System.EventHandler(this.loadTableToolStripMenuItem_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lsvBill);
-            this.panel2.Location = new System.Drawing.Point(480, 98);
+            this.panel2.Location = new System.Drawing.Point(480, 96);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(338, 216);
             this.panel2.TabIndex = 0;
@@ -122,9 +130,9 @@
             this.columnHeader3,
             this.columnHeader4});
             this.lsvBill.GridLines = true;
-            this.lsvBill.Location = new System.Drawing.Point(3, 0);
+            this.lsvBill.Location = new System.Drawing.Point(3, 3);
             this.lsvBill.Name = "lsvBill";
-            this.lsvBill.Size = new System.Drawing.Size(332, 217);
+            this.lsvBill.Size = new System.Drawing.Size(332, 210);
             this.lsvBill.TabIndex = 0;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
             this.lsvBill.View = System.Windows.Forms.View.Details;
@@ -244,10 +252,10 @@
             // 
             this.nmFoodCount.Location = new System.Drawing.Point(269, 18);
             this.nmFoodCount.Minimum = new decimal(new int[] {
-            1,
+            3,
             0,
             0,
-            0});
+            -2147483648});
             this.nmFoodCount.Name = "nmFoodCount";
             this.nmFoodCount.Size = new System.Drawing.Size(62, 20);
             this.nmFoodCount.TabIndex = 2;
@@ -288,31 +296,26 @@
             this.flpTable.AutoScroll = true;
             this.flpTable.Location = new System.Drawing.Point(12, 27);
             this.flpTable.Name = "flpTable";
-            this.flpTable.Size = new System.Drawing.Size(442, 350);
+            this.flpTable.Size = new System.Drawing.Size(447, 350);
             this.flpTable.TabIndex = 4;
             this.flpTable.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTable_Paint);
-            // 
-            // loadTableToolStripMenuItem
-            // 
-            this.loadTableToolStripMenuItem.Name = "loadTableToolStripMenuItem";
-            this.loadTableToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.loadTableToolStripMenuItem.Text = "Load Table";
-            this.loadTableToolStripMenuItem.Click += new System.EventHandler(this.loadTableToolStripMenuItem_Click);
             // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 405);
+            this.BackgroundImage = global::QuanLyCafe.Properties.Resources.giaiphapquanso3628;
+            this.ClientSize = new System.Drawing.Size(828, 398);
             this.Controls.Add(this.flpTable);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "fTableManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Phần mềm quản lý cafe";
+            this.Text = "Phần mềm quản lý nhà hàng";
             this.Load += new System.EventHandler(this.fTableManager_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
